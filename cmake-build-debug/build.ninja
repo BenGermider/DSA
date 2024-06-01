@@ -51,9 +51,27 @@ build cmake_object_order_depends_target_DSA: phony || CMakeFiles/DSA.dir
 
 build CMakeFiles/DSA.dir/main.c.obj: C_COMPILER__DSA_unscanned_Debug C$:/Users/Ben/Desktop/OpenU/DSA/DSA/main.c || cmake_object_order_depends_target_DSA
   DEP_FILE = CMakeFiles\DSA.dir\main.c.obj.d
-  FLAGS = -g -std=gnu90 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\DSA.dir
   OBJECT_FILE_DIR = CMakeFiles\DSA.dir
+
+build CMakeFiles/DSA.dir/linked_list/node.c.obj: C_COMPILER__DSA_unscanned_Debug C$:/Users/Ben/Desktop/OpenU/DSA/DSA/linked_list/node.c || cmake_object_order_depends_target_DSA
+  DEP_FILE = CMakeFiles\DSA.dir\linked_list\node.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DSA.dir
+  OBJECT_FILE_DIR = CMakeFiles\DSA.dir\linked_list
+
+build CMakeFiles/DSA.dir/utils/errors.c.obj: C_COMPILER__DSA_unscanned_Debug C$:/Users/Ben/Desktop/OpenU/DSA/DSA/utils/errors.c || cmake_object_order_depends_target_DSA
+  DEP_FILE = CMakeFiles\DSA.dir\utils\errors.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DSA.dir
+  OBJECT_FILE_DIR = CMakeFiles\DSA.dir\utils
+
+build CMakeFiles/DSA.dir/linked_list/list.c.obj: C_COMPILER__DSA_unscanned_Debug C$:/Users/Ben/Desktop/OpenU/DSA/DSA/linked_list/list.c || cmake_object_order_depends_target_DSA
+  DEP_FILE = CMakeFiles\DSA.dir\linked_list\list.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DSA.dir
+  OBJECT_FILE_DIR = CMakeFiles\DSA.dir\linked_list
 
 
 # =============================================================================
@@ -63,7 +81,7 @@ build CMakeFiles/DSA.dir/main.c.obj: C_COMPILER__DSA_unscanned_Debug C$:/Users/B
 #############################################
 # Link the executable DSA.exe
 
-build DSA.exe: C_EXECUTABLE_LINKER__DSA_Debug CMakeFiles/DSA.dir/main.c.obj
+build DSA.exe: C_EXECUTABLE_LINKER__DSA_Debug CMakeFiles/DSA.dir/main.c.obj CMakeFiles/DSA.dir/linked_list/node.c.obj CMakeFiles/DSA.dir/utils/errors.c.obj CMakeFiles/DSA.dir/linked_list/list.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\DSA.dir
