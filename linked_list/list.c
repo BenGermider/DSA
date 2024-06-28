@@ -124,17 +124,13 @@ void min_heapify(Node* head, Node* node) {
 
 void insert(List* list, int new_data) {
     Node* new_node = createNode(new_data);
-
     if (list->head == NULL) {
         list->head = new_node;
+        list->tail = new_node;
     } else {
-        Node* last = list->head;
-        while (last->next != NULL) {
-            last = last->next;
-        }
-        last->next = new_node;
-        new_node->prev = last;
-
+        list->tail->next = new_node;
+        new_node->prev = list->tail;
+        list->tail = new_node;
         Node* current = new_node;
         Node* parent = getParent(list->head, current);
         while (parent != NULL && parent->data > current->data) {
@@ -148,11 +144,48 @@ void insert(List* list, int new_data) {
 }
 
 
-void print_list(Node* node) {
+int pop_node(List* list, Node* node){
+    Node* ptr;
+    int data;
+    heap_underflow(list);
+    if (node == list->head) {
+        data = list->head->data;
+        list->head = node->next;
+        if (list->head != NULL) {
+            list->head->prev = NULL;
+        } else {
+            list->tail = NULL; // If the list becomes empty
+        }
+    }
+        // If node to be removed is the tail
+    else if (node == list->tail) {
+        data = list->tail->data;
+        list->tail = node->prev;
+        if (list->tail != NULL) {
+            list->tail->next = NULL;
+        } else {
+            list->head = NULL; // If the list becomes empty
+        }
+    } else {
+        ptr = list->head;
+        while(ptr != NULL){
+            if(ptr == node){
+                ptr->prev->next = ptr->next;
+                ptr->next->prev = ptr->prev;
+                data = ptr->data;
+                free(ptr);
+            }
+        }
+    }
+    return data;
+}
+
+void print_list(List* list) {
     printf("\nTraversal in forward direction:\n");
-    while (node != NULL) {
-        printf("%d ", node->data);
-        node = node->next;
+    Node* head = list->head;
+    while (head != NULL) {
+        printf("%d ", head->data);
+        head = head->next;
     }
     printf("\n");
 }
@@ -170,8 +203,11 @@ int minimum(List* list){
  * @return the minimum value.
  */
 int extract_min(List* list){
+    int min;
     heap_underflow(list);
-
+    min = pop_node(list, list->head);
+    min_heapify(list->head, list->tail);
+    return min;
 }
 
 

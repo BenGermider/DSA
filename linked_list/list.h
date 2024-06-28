@@ -59,6 +59,6 @@ void union_heap();  // Union is a
  * Prints as a list.
  * @param node to print from.
  */
-void print_list(Node* node);
+void print_list(List* list);
 
 #endif //DSA_LIST_H
