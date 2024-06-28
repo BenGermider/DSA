@@ -17,3 +17,8 @@ void heap_underflow(List* list){
     }
 }
 
+int invalid_command(){
+    printf("[ERROR] Received an invalid command, try again!\n");
+    return 1;
+}
+

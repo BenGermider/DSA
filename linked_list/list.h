@@ -18,7 +18,7 @@ List* make_heap();
  * Insert a new node to the heap.
  * @param value value of new node.
  */
-void insert(List* list, int value);
+int insert(List* list, int value);
 
 
 void min_heapify(Node* head, Node* node);
@@ -53,12 +53,12 @@ int extract_min(List* list);
 /**
  * Merges two heaps.
  */
-void union_heap();  // Union is a
+int union_heap();  // Union is a
 
 /**
  * Prints as a list.
  * @param node to print from.
  */
-void print_list(List* list);
+int print_list(List* list);
 
 #endif //DSA_LIST_H

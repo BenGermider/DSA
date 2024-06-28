@@ -122,7 +122,8 @@ void min_heapify(Node* head, Node* node) {
     }
 }
 
-void insert(List* list, int new_data) {
+int insert(List* list, int new_data) {
+    printf("[INSERT] %d\n", new_data);
     Node* new_node = createNode(new_data);
     if (list->head == NULL) {
         list->head = new_node;
@@ -141,6 +142,7 @@ void insert(List* list, int new_data) {
             parent = getParent(list->head, current);
         }
     }
+    return 0;
 }
 
 
@@ -180,7 +182,7 @@ int pop_node(List* list, Node* node){
     return data;
 }
 
-void print_list(List* list) {
+int print_list(List* list) {
     printf("\nTraversal in forward direction:\n");
     Node* head = list->head;
     while (head != NULL) {
@@ -188,6 +190,7 @@ void print_list(List* list) {
         head = head->next;
     }
     printf("\n");
+    return 0;
 }
 
 /**
@@ -195,6 +198,7 @@ void print_list(List* list) {
  */
 int minimum(List* list){
     heap_underflow(list);
+    printf("[MINIMUM] %d\n", list->head->data);
     return list->head->data;
 }
 
@@ -207,14 +211,30 @@ int extract_min(List* list){
     heap_underflow(list);
     min = pop_node(list, list->head);
     min_heapify(list->head, list->tail);
+    printf("[EXTRACT MIN] %d\n", min);
     return min;
 }
 
+void purge_list(List* list){
+    Node* node = (list)->head;
+    Node* next;
+    while(node != NULL){
+        next = node->next;
+        free(node);
+        node = next;
+    }
+    list->head = NULL;
+    list->tail = NULL;
+}
 
 /**
  * Merges two heaps.
  */
-void union_heap(){
+int union_heap(List* list1, List* list2){
+    if(list1->head == NULL){
+        list1->head = list2->head;
+        purge_list(list2);
+    }
 
 }
 
